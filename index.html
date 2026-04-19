@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>PlotTrust — Verified plots, 7/12 lookup & UDCPR tools for Maharashtra</title>
+<meta name="description" content="Search NA plots across 44,000+ Maharashtra villages with verified 7/12, Zone, and Ready Reckoner data. Built for buyers, builders, and legal teams in Nashik, Kolhapur & Pune." />
+<meta name="theme-color" content="#0F4C81" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="PlotTrust — Verified plots + land records for Maharashtra" />
+<meta property="og:description" content="Village-level plot discovery with 7/12, Zone, DP reservation and Ready Reckoner — in one place." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://plottrust.in" />
+<meta property="og:image" content="https://plottrust.in/og-cover.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet" />
+
+<!-- JSON-LD: RealEstateAgent + WebSite + Breadcrumb -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"RealEstateAgent",
+  "name":"PlotTrust",
+  "url":"https://plottrust.in",
+  "logo":"https://plottrust.in/logo.png",
+  "areaServed":[{"@type":"State","name":"Maharashtra"}],
+  "sameAs":["https://www.linkedin.com/company/plottrust","https://wa.me/919999999999"],
+  "contactPoint":{"@type":"ContactPoint","telephone":"+91-99999-99999","contactType":"customer service","areaServed":"IN","availableLanguage":["English","Marathi","Hindi"]},
+  "address":{"@type":"PostalAddress","streetAddress":"College Road","addressLocality":"Nashik","addressRegion":"MH","postalCode":"422005","addressCountry":"IN"}
+}
+</script>
+
+<style>
+/* ═══════════════ DESIGN TOKENS ═══════════════ */
+:root{
+  /* Trust palette — blue primary, green verified, saffron accent */
+  --blue-900:#0A2647;
+  --blue-700:#0F4C81;
+  --blue-600:#1466A5;
+  --blue-50:#EEF5FB;
+
+  --green-700:#047857;
+  --green-600:#059669;
+  --green-50:#ECFDF5;
+
+  --saffron:#F97316;   /* CTA accent */
+  --saffron-h:#EA580C;
+
+  --zone-green:#16A34A;
+  --zone-yellow:#F59E0B;
+  --zone-red:#DC2626;
+
+  --ink:#0F172A;
+  --body:#334155;
+  --muted:#64748B;
+  --line:#E2E8F0;
+  --bg:#F8FAFC;
+  --card:#FFFFFF;
+  --chip:#F1F5F9;
+
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+  --shadow:0 4px 14px rgba(15,23,42,.08);
+  --shadow-lg:0 16px 40px rgba(15,23,42,.12);
+
+  --r-xs:6px;--r-sm:8px;--r-md:12px;--r-lg:16px;--r-xl:24px;
+
+  --ff-body:'Inter','Noto Sans Devanagari',system-ui,sans-serif;
+  --ff-head:'Plus Jakarta Sans','Noto Sans Devanagari',system-ui,sans-serif;
+  --ff-mono:'JetBrains Mono',ui-monospace,monospace;
+  --ff-mr:'Noto Sans Devanagari','Inter',sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{background:var(--bg);color:var(--body);font-family:var(--ff-body);font-size:15px;line-height:1.6;min-height:100vh;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:var(--blue-700);text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.mr{font-family:var(--ff-mr)}
+
+/* ═══════════════ TOP INFO BAR ═══════════════ */
+.topbar{
+  background:var(--blue-900);color:#C7DCEE;font-size:12px;
+  padding:8px 0;letter-spacing:.01em;
+}
+.topbar .inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;gap:24px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.tb-left{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.tb-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.07);padding:3px 9px;border-radius:999px;color:#E2EEFA}
+.tb-badge .dot{width:6px;height:6px;background:#4ADE80;border-radius:50%}
+.tb-right a{color:#C7DCEE;margin-left:16px;font-weight:500}
+.tb-right a:hover{color:#fff}
+@media(max-width:640px){.tb-right{display:none}}
+
+/* ═══════════════ NAVIGATION ═══════════════ */
+.nav{
+  position:sticky;top:0;z-index:80;background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(1.6) blur(12px);-webkit-backdrop-filter:saturate(1.6) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--ff-head);font-weight:800;font-size:18px;color:var(--ink);letter-spacing:-.01em}
+.brand-mark{
+  width:32px;height:32px;border-radius:8px;
+  background:linear-gradient(135deg,var(--blue-700),var(--green-600));
+  color:#fff;display:grid;place-items:center;font-size:14px;font-weight:700;
+}
+.nav-links{display:flex;gap:4px;margin-left:16px}
+.nav-links a{padding:8px 12px;border-radius:var(--r-sm);font-weight:500;color:var(--body);font-size:14px}
+.nav-links a:hover{background:var(--chip);color:var(--ink)}
+.nav-links a.is-active{color:var(--blue-700);background:var(--blue-50)}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:var(--r-sm);font-weight:600;font-size:14px;transition:all .18s ease;white-space:nowrap}
+.btn-ghost{color:var(--ink)}
+.btn-ghost:hover{background:var(--chip)}
+.btn-primary{background:var(--blue-700);color:#fff}
+.btn-primary:hover{background:var(--blue-900);transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn-accent{background:var(--saffron);color:#fff}
+.btn-accent:hover{background:var(--saffron-h);transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn-outline{color:var(--blue-700);border:1.5px solid var(--blue-700);background:#fff}
+.btn-outline:hover{background:var(--blue-50)}
+.btn-wa{background:#25D366;color:#fff}
+.btn-wa:hover{background:#1FB754}
+
+.nav-toggle{display:none;padding:8px;border-radius:var(--r-sm);border:1px solid var(--line);background:#fff}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-toggle{display:inline-flex}
+  .nav-right .btn-outline{display:none}
+}
+.mobile-sheet{
+  display:none;border-top:1px solid var(--line);background:#fff;padding:16px 24px;
+}
+.mobile-sheet.open{display:block}
+.mobile-sheet a{display:block;padding:12px;border-radius:var(--r-sm);color:var(--ink);font-weight:500}
+.mobile-sheet a:hover{background:var(--chip)}
+
+/* ═══════════════ HERO ═══════════════ */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(1200px 400px at 85% -10%,rgba(37,212,132,.10),transparent 60%),
+    radial-gradient(1000px 500px at 0% 0%,rgba(20,102,165,.16),transparent 55%),
+    linear-gradient(180deg,#0A2647 0%,#0F4C81 100%);
+  color:#fff;padding:64px 24px 72px;overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+                    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 80%);
+}
+.hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center}
+@media(max-width:960px){.hero-inner{grid-template-columns:1fr;gap:32px}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#D9E8F5;margin-bottom:18px}
+.eyebrow .dot{width:6px;height:6px;background:#4ADE80;border-radius:50%;box-shadow:0 0 0 4px rgba(74,222,128,.2)}
+.hero h1{font-family:var(--ff-head);font-weight:800;font-size:clamp(2rem,4.2vw,3.25rem);line-height:1.08;letter-spacing:-.02em;color:#fff;margin-bottom:16px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,#7DD3FC,#34D399);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{font-size:1.02rem;color:#C7DCEE;max-width:520px;line-height:1.7;margin-bottom:28px}
+.trust-line{display:flex;gap:20px;align-items:center;flex-wrap:wrap;font-size:13px;color:#B6CBDF;margin-bottom:28px}
+.trust-line .tl-item{display:inline-flex;align-items:center;gap:6px}
+.trust-line svg{flex-shrink:0}
+
+/* Search */
+.searchbox{
+  background:#fff;border-radius:14px;padding:10px;display:grid;
+  grid-template-columns:auto 1fr auto;gap:8px;align-items:center;
+  box-shadow:0 20px 50px rgba(10,38,71,.4),0 4px 12px rgba(0,0,0,.15);
+  max-width:680px;
+}
+.sb-cat{
+  appearance:none;background:var(--chip);border:none;
+  padding:12px 36px 12px 14px;border-radius:10px;font-weight:600;font-size:14px;color:var(--ink);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'><path d='M3 4.5L6 7.5L9 4.5' stroke='%230F4C81' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;
+}
+.sb-input{border:none;padding:12px 14px;font-size:15px;outline:none;color:var(--ink);min-width:0;font-family:inherit}
+.sb-input::placeholder{color:var(--muted)}
+.sb-btn{background:var(--saffron);color:#fff;padding:12px 18px;border-radius:10px;font-weight:700;font-size:14px;display:inline-flex;gap:8px;align-items:center}
+.sb-btn:hover{background:var(--saffron-h)}
+@media(max-width:560px){.searchbox{grid-template-columns:1fr;gap:6px}.sb-cat{width:100%}}
+
+.quick-chips{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:7px 13px;font-size:12.5px;color:#E2EEFA;font-weight:500;cursor:pointer;transition:all .15s}
+.chip:hover{background:rgba(255,255,255,.16);color:#fff}
+.chip.is-on{background:#fff;color:var(--blue-700);border-color:#fff}
+
+/* Hero right — stats card */
+.stats-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r-lg);padding:24px;backdrop-filter:blur(6px);
+}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{background:rgba(255,255,255,.06);border-radius:12px;padding:16px}
+.stat-n{font-family:var(--ff-head);font-size:26px;font-weight:800;color:#fff;line-height:1.1;letter-spacing:-.01em}
+.stat-l{font-size:12px;color:#B6CBDF;margin-top:4px}
+.live-ticker{
+  margin-top:16px;background:rgba(0,0,0,.25);border-radius:10px;padding:10px 14px;
+  font-size:12.5px;color:#C7DCEE;display:flex;gap:8px;align-items:center;
+  border:1px solid rgba(255,255,255,.06);
+}
+.live-ticker .dot{width:7px;height:7px;background:#4ADE80;border-radius:50%;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}
+
+/* ═══════════════ SECTIONS ═══════════════ */
+section{scroll-margin-top:72px}
+.section{max-width:1200px;margin:0 auto;padding:72px 24px}
+.eyebrow-sec{display:inline-block;color:var(--blue-700);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.h2{font-family:var(--ff-head);font-weight:800;font-size:clamp(1.6rem,2.6vw,2.2rem);color:var(--ink);line-height:1.15;letter-spacing:-.015em;margin-bottom:8px}
+.h2 em{font-style:normal;color:var(--blue-700)}
+.lead{color:var(--muted);font-size:15.5px;max-width:620px;line-height:1.7}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:32px;flex-wrap:wrap}
+
+/* ═══════════════ QUICK-TOOL STRIP ═══════════════ */
+.tools-strip{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tools-grid{max-width:1200px;margin:0 auto;padding:20px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-radius:var(--r-md);overflow:hidden}
+.tool-tile{background:#fff;padding:20px;display:flex;gap:14px;align-items:flex-start;transition:background .18s}
+.tool-tile:hover{background:var(--blue-50)}
+.tool-icon{width:40px;height:40px;border-radius:10px;background:var(--blue-50);color:var(--blue-700);display:grid;place-items:center;flex-shrink:0}
+.tool-body h3{font-family:var(--ff-head);font-weight:700;font-size:15px;color:var(--ink);margin-bottom:2px}
+.tool-body p{font-size:12.5px;color:var(--muted);line-height:1.5}
+@media(max-width:900px){.tools-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.tools-grid{grid-template-columns:1fr}}
+
+/* ═══════════════ PLOT CARDS ═══════════════ */
+.plots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:900px){.plots-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.plots-grid{grid-template-columns:1fr}}
+.plot-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+  overflow:hidden;transition:all .2s ease;display:flex;flex-direction:column;
+}
+.plot-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:#CBD5E1}
+.plot-img{height:180px;position:relative;background:#E2E8F0;overflow:hidden}
+.plot-img-ph{
+  width:100%;height:100%;background:
+    linear-gradient(45deg,#E2E8F0 25%,transparent 25%,transparent 75%,#E2E8F0 75%),
+    linear-gradient(45deg,#E2E8F0 25%,#CBD5E1 25%,#CBD5E1 75%,#E2E8F0 75%);
+  background-size:24px 24px;background-position:0 0,12px 12px;position:relative;
+}
+.plot-img-ph::after{
+  content:"Plot / Village Map";position:absolute;inset:0;display:grid;place-items:center;
+  color:#64748B;font-family:var(--ff-head);font-weight:600;font-size:13px;letter-spacing:.04em;
+}
+.zone-badge{
+  position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:5px;
+  padding:5px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.03em;
+  color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.18);
+}
+.zone-green{background:var(--zone-green)}
+.zone-yellow{background:var(--zone-yellow);color:#111}
+.zone-red{background:var(--zone-red)}
+.zone-badge .dot{width:5px;height:5px;background:currentColor;border-radius:50%;opacity:.8}
+
+.saved-btn{
+  position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,.95);color:var(--muted);display:grid;place-items:center;
+  box-shadow:var(--shadow);transition:all .15s;
+}
+.saved-btn:hover{color:var(--zone-red);transform:scale(1.08)}
+
+.plot-body{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.plot-village{font-family:var(--ff-head);font-weight:800;font-size:18px;color:var(--ink);line-height:1.2}
+.plot-loc{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
+
+.gat-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:8px 10px;background:var(--chip);border-radius:8px;font-family:var(--ff-mono);font-size:12px;color:var(--ink);font-weight:500}
+.gat-row .label{color:var(--muted);font-family:var(--ff-body);font-weight:500}
+
+.plot-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;text-transform:uppercase;letter-spacing:.03em}
+.tag-na{background:var(--green-50);color:var(--green-700)}
+.tag-agri{background:#FEF9C3;color:#854D0E}
+.tag-rera{background:var(--blue-50);color:var(--blue-700)}
+
+.price-compare{
+  display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px;
+  background:linear-gradient(180deg,#F8FAFC,#fff);border:1px solid var(--line);border-radius:10px;
+}
+.pc-block{display:flex;flex-direction:column;gap:2px}
+.pc-label{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+.pc-value{font-family:var(--ff-head);font-weight:700;font-size:15px;color:var(--ink)}
+.pc-gov{border-right:1px dashed var(--line);padding-right:8px}
+.pc-value.market{color:var(--green-700)}
+.pc-delta{font-size:11px;font-weight:700;padding:2px 6px;border-radius:999px;align-self:start;margin-top:2px}
+.pc-up{background:var(--green-50);color:var(--green-700)}
+
+.plot-foot{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:auto;padding-top:6px}
+.plot-area{font-size:12.5px;color:var(--muted)}
+.plot-area b{color:var(--ink)}
+
+/* ═══════════════ SERVICES ═══════════════ */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:800px){.services-grid{grid-template-columns:1fr}}
+.svc-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;
+  transition:all .2s ease;position:relative;overflow:hidden;
+}
+.svc-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--blue-700)}
+.svc-card:nth-child(2)::before{background:var(--green-600)}
+.svc-card:nth-child(3)::before{background:var(--saffron)}
+.svc-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.svc-icon{width:44px;height:44px;border-radius:12px;background:var(--blue-50);color:var(--blue-700);display:grid;place-items:center;margin-bottom:14px}
+.svc-card:nth-child(2) .svc-icon{background:var(--green-50);color:var(--green-700)}
+.svc-card:nth-child(3) .svc-icon{background:#FEF3C7;color:var(--saffron-h)}
+.svc-card h3{font-family:var(--ff-head);font-weight:800;font-size:18px;color:var(--ink);margin-bottom:6px}
+.svc-card p{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.svc-list li{font-size:13px;color:var(--body);display:flex;gap:8px;align-items:center}
+.svc-list li::before{content:"✓";color:var(--green-600);font-weight:800}
+.svc-card .btn{margin-top:18px}
+
+/* ═══════════════ HOW IT WORKS ═══════════════ */
+.how{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-radius:var(--r-lg);overflow:hidden;margin-top:24px}
+.how-step{background:#fff;padding:28px;position:relative}
+.how-step .num{
+  font-family:var(--ff-head);font-weight:800;font-size:14px;color:var(--blue-700);
+  letter-spacing:.08em;margin-bottom:8px;
+}
+.how-step h4{font-family:var(--ff-head);font-weight:800;font-size:17px;color:var(--ink);margin-bottom:6px}
+.how-step p{font-size:13.5px;color:var(--muted);line-height:1.65}
+@media(max-width:900px){.how-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.how-grid{grid-template-columns:1fr}}
+
+/* ═══════════════ TESTIMONIALS ═══════════════ */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr}}
+.testi{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;
+  display:flex;flex-direction:column;gap:14px;
+}
+.stars{color:#F59E0B;letter-spacing:2px;font-size:14px}
+.testi-quote{font-size:14.5px;color:var(--body);line-height:1.7}
+.testi-author{display:flex;align-items:center;gap:12px;margin-top:auto}
+.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--blue-600),var(--green-600));color:#fff;display:grid;place-items:center;font-weight:700}
+.author-name{font-weight:700;color:var(--ink);font-size:14px}
+.author-role{font-size:12px;color:var(--muted)}
+
+/* ═══════════════ CTA BAND ═══════════════ */
+.cta-band{
+  background:linear-gradient(135deg,var(--blue-900),var(--blue-700));
+  color:#fff;padding:56px 24px;text-align:center;position:relative;overflow:hidden;
+}
+.cta-band::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:40px 40px;opacity:.7}
+.cta-inner{max-width:720px;margin:0 auto;position:relative;z-index:1}
+.cta-inner h2{font-family:var(--ff-head);font-weight:800;font-size:clamp(1.6rem,3.6vw,2.4rem);color:#fff;line-height:1.2;margin-bottom:10px}
+.cta-inner p{color:#C7DCEE;margin-bottom:22px;font-size:15px;max-width:520px;margin-left:auto;margin-right:auto}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ═══════════════ FOOTER ═══════════════ */
+.footer{background:#0A1B2E;color:#94A3B8;padding:56px 24px 20px}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+@media(max-width:820px){.footer-inner{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.footer-inner{grid-template-columns:1fr}}
+.footer .brand{color:#fff;margin-bottom:10px}
+.footer-tagline{font-size:13px;line-height:1.65;margin-bottom:14px;color:#94A3B8}
+.footer-contact{display:flex;flex-direction:column;gap:8px;font-size:13px;color:#CBD5E1}
+.footer-contact a{color:#CBD5E1}
+.footer-contact a:hover{color:#fff}
+.footer h5{color:#fff;font-family:var(--ff-head);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.footer ul a{color:#94A3B8;font-size:13.5px}
+.footer ul a:hover{color:#fff}
+.footer-bot{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,.06);padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:#64748B}
+.footer-gov{max-width:1200px;margin:18px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.06);font-size:12px;color:#64748B;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.footer-gov a{color:#94A3B8}
+.footer-gov a:hover{color:#fff}
+.footer-disc{max-width:1200px;margin:14px auto 0;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.18);color:#FCA5A5;font-size:12px;padding:10px 14px;border-radius:8px;line-height:1.55}
+
+/* ═══════════════ WHATSAPP FLOAT ═══════════════ */
+.wa-float{
+  position:fixed;bottom:20px;right:20px;z-index:90;display:inline-flex;align-items:center;gap:10px;
+  background:#25D366;color:#fff;font-weight:700;padding:12px 16px;border-radius:999px;
+  box-shadow:0 10px 28px rgba(37,211,102,.4);transition:transform .2s;
+}
+.wa-float:hover{transform:translateY(-2px) scale(1.02);color:#fff}
+.wa-float svg{flex-shrink:0}
+@media(max-width:540px){.wa-float span{display:none}.wa-float{padding:14px;border-radius:50%}}
+
+/* ═══════════════ REVEAL ANIMATIONS ═══════════════ */
+.fu{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.fu.in{opacity:1;transform:translateY(0)}
+
+@media (prefers-reduced-motion: reduce){
+  .fu,.fu.in{opacity:1;transform:none;transition:none}
+  .live-ticker .dot{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ── TOP INFO BAR ── -->
+<div class="topbar" role="region" aria-label="Trust bar">
+  <div class="inner">
+    <div class="tb-left">
+      <span class="tb-badge"><span class="dot"></span>MahaRERA-aware</span>
+      <span class="tb-badge">UDCPR 2020 compliant</span>
+      <span class="tb-badge">44,000+ villages covered</span>
+    </div>
+    <div class="tb-right">
+      <a href="tel:+919999999999">📞 +91 99999 99999</a>
+      <a href="mailto:hello@plottrust.in">hello@plottrust.in</a>
+      <a href="/partner">For Partners</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<header class="nav" role="navigation" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="/" class="brand" aria-label="PlotTrust home">
+      <span class="brand-mark">PT</span>
+      PlotTrust
+    </a>
+    <nav class="nav-links">
+      <a href="/search" class="is-active">Find Plots</a>
+      <a href="/tools/712">7/12 Lookup</a>
+      <a href="/tools/zone">Zone Checker</a>
+      <a href="/tools/ready-reckoner">Ready Reckoner</a>
+      <a href="/services">Services</a>
+      <a href="/guide">Guide</a>
+    </nav>
+    <div class="nav-right">
+      <a href="/login" class="btn btn-outline">Login</a>
+      <a href="/signup" class="btn btn-primary">Start Free</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-sheet" id="mobileSheet" role="menu">
+    <a href="/search">Find Plots</a>
+    <a href="/tools/712">7/12 Lookup</a>
+    <a href="/tools/zone">Zone Checker</a>
+    <a href="/tools/ready-reckoner">Ready Reckoner</a>
+    <a href="/services">Services</a>
+    <a href="/guide">Guide</a>
+    <a href="/login">Login</a>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Built for Maharashtra · Nashik · Pune · Kolhapur</span>
+      <h1>Find verified plots with <em>7/12, Zone &amp; Ready Reckoner</em> — in one place</h1>
+      <p class="hero-sub">Search by village, Gat Number, Survey Number or RERA project. Every listing shows land type, DP zone, government value vs market — before you enquire.</p>
+
+      <form class="searchbox" role="search" onsubmit="event.preventDefault();doSearch()">
+        <select class="sb-cat" id="searchCat" aria-label="Search category">
+          <option value="village">Village</option>
+          <option value="gat">Gat / Survey No.</option>
+          <option value="rera">RERA Project</option>
+          <option value="cts">CTS No.</option>
+        </select>
+        <input class="sb-input" id="searchInput" type="text" placeholder="e.g., Gangapur, Gat 142/2, P51600040000…" aria-label="Search term" />
+        <button class="sb-btn" type="submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          Search
+        </button>
+      </form>
+
+      <div class="quick-chips">
+        <button class="chip is-on" data-chip="na">NA Plots</button>
+        <button class="chip" data-chip="agri">Agriculture</button>
+        <button class="chip" data-chip="rera">RERA Verified</button>
+        <button class="chip" data-chip="budget">Under ₹50L</button>
+        <button class="chip" data-chip="school">School Reserved</button>
+      </div>
+
+      <div class="trust-line" style="margin-top:28px">
+        <span class="tl-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          Village-level data
+        </span>
+        <span class="tl-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="2.2"><path d="M12 2 4 7l8 5 8-5-8-5zM4 12l8 5 8-5M4 17l8 5 8-5"/></svg>
+          iGR + Mahabhumi sources
+        </span>
+        <span class="tl-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2.2"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg>
+          No brokerage on listings
+        </span>
+      </div>
+    </div>
+
+    <aside class="stats-card" aria-label="Live platform stats">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-n">44,142</div>
+          <div class="stat-l">Villages mapped</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">9,809</div>
+          <div class="stat-l">RERA projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">1.2M+</div>
+          <div class="stat-l">7/12 records</div>
+        </div>
+        <div class="stat">
+          <div class="stat-n">₹2.8Cr</div>
+          <div class="stat-l">Median Nashik plot</div>
+        </div>
+      </div>
+      <div class="live-ticker">
+        <span class="dot"></span>
+        <span><b style="color:#fff">Live:</b> New 7/12 fetched for <b style="color:#fff;font-family:var(--ff-mono)">Gat 142/2, Shirwade</b></span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ── QUICK TOOLS STRIP ── -->
+<div class="tools-strip">
+  <div class="tools-grid">
+    <a href="/tools/712" class="tool-tile">
+      <div class="tool-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>
+      </div>
+      <div class="tool-body">
+        <h3>7/12 Extract</h3>
+        <p>Satbara in seconds by village + Gat No.</p>
+      </div>
+    </a>
+    <a href="/tools/zone" class="tool-tile">
+      <div class="tool-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6zM9 3v15M15 6v15"/></svg>
+      </div>
+      <div class="tool-body">
+        <h3>DP / TP Zone</h3>
+        <p>Red, Yellow, Green — reservation check.</p>
+      </div>
+    </a>
+    <a href="/tools/ready-reckoner" class="tool-tile">
+      <div class="tool-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div class="tool-body">
+        <h3>Ready Reckoner</h3>
+        <p>ASR rate + stamp duty estimator.</p>
+      </div>
+    </a>
+    <a href="/tools/udcpr" class="tool-tile">
+      <div class="tool-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2h-4v-7h-6v7H5a2 2 0 0 1-2-2V9z"/></svg>
+      </div>
+      <div class="tool-body">
+        <h3>UDCPR Calc</h3>
+        <p>Setback, FSI, buildable area instantly.</p>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ── FEATURED PLOTS ── -->
+<section class="section" id="plots">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow-sec">Featured Listings</span>
+      <h2 class="h2">Verified plots with <em>govt &amp; market value</em></h2>
+      <p class="lead">Every card shows village, Gat / Survey Number, land type and DP zone — no hidden surprises.</p>
+    </div>
+    <a href="/search" class="btn btn-outline">Browse all 840+ plots →</a>
+  </div>
+
+  <div class="plots-grid">
+    <!-- Plot 1 -->
+    <article class="plot-card fu">
+      <div class="plot-img">
+        <div class="plot-img-ph"></div>
+        <span class="zone-badge zone-green" title="Green zone — Residential"><span class="dot"></span>Green Zone · R-1</span>
+        <button class="saved-btn" aria-label="Save plot">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="plot-body">
+        <div>
+          <div class="plot-village">Gangapur</div>
+          <div class="plot-loc">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Nashik Tal, Nashik Dist.
+          </div>
+        </div>
+        <div class="gat-row">
+          <span class="label">Gat</span>
+          <span>142 / 2-A</span>
+          <span style="color:var(--line)">·</span>
+          <span class="label">Survey</span>
+          <span>58</span>
+        </div>
+        <div class="plot-tags">
+          <span class="tag tag-na">NA</span>
+          <span class="tag tag-rera">RERA P51600012345</span>
+        </div>
+        <div class="price-compare">
+          <div class="pc-block pc-gov">
+            <span class="pc-label">Govt (ASR)</span>
+            <span class="pc-value">₹42.8L</span>
+          </div>
+          <div class="pc-block">
+            <span class="pc-label">Market</span>
+            <span class="pc-value market">₹58.0L</span>
+            <span class="pc-delta pc-up">+35% ↑</span>
+          </div>
+        </div>
+        <div class="plot-foot">
+          <div class="plot-area"><b>2,400</b> sq.ft · 223 sq.m</div>
+          <a href="/plots/p-0142-2a" class="btn btn-primary" style="padding:8px 14px;font-size:13px">View →</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Plot 2 -->
+    <article class="plot-card fu">
+      <div class="plot-img">
+        <div class="plot-img-ph"></div>
+        <span class="zone-badge zone-yellow" title="Yellow zone — Agri / NA convertible"><span class="dot"></span>Yellow · Agri+NA</span>
+        <button class="saved-btn" aria-label="Save plot">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="plot-body">
+        <div>
+          <div class="plot-village">Shirwade</div>
+          <div class="plot-loc">Igatpuri Tal, Nashik Dist.</div>
+        </div>
+        <div class="gat-row">
+          <span class="label">Gat</span><span>77/1</span>
+          <span style="color:var(--line)">·</span>
+          <span class="label">CTS</span><span>—</span>
+        </div>
+        <div class="plot-tags">
+          <span class="tag tag-agri">Agri + NA-potential</span>
+        </div>
+        <div class="price-compare">
+          <div class="pc-block pc-gov">
+            <span class="pc-label">Govt (ASR)</span>
+            <span class="pc-value">₹14.2L</span>
+          </div>
+          <div class="pc-block">
+            <span class="pc-label">Market</span>
+            <span class="pc-value market">₹22.5L</span>
+            <span class="pc-delta pc-up">+58% ↑</span>
+          </div>
+        </div>
+        <div class="plot-foot">
+          <div class="plot-area"><b>1 Acre</b> · 40 Guntha</div>
+          <a href="/plots/p-0077-1" class="btn btn-primary" style="padding:8px 14px;font-size:13px">View →</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Plot 3 -->
+    <article class="plot-card fu">
+      <div class="plot-img">
+        <div class="plot-img-ph"></div>
+        <span class="zone-badge zone-red" title="Red zone — reserved/restricted"><span class="dot"></span>Red · School Res.</span>
+        <button class="saved-btn" aria-label="Save plot">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="plot-body">
+        <div>
+          <div class="plot-village">Makhmalabad</div>
+          <div class="plot-loc">Nashik Tal, Nashik Dist.</div>
+        </div>
+        <div class="gat-row">
+          <span class="label">Survey</span><span>214</span>
+          <span style="color:var(--line)">·</span>
+          <span class="label">CTS</span><span>9812</span>
+        </div>
+        <div class="plot-tags">
+          <span class="tag tag-rera">DP Reserved · School</span>
+        </div>
+        <div class="price-compare">
+          <div class="pc-block pc-gov">
+            <span class="pc-label">Govt (ASR)</span>
+            <span class="pc-value">₹1.08 Cr</span>
+          </div>
+          <div class="pc-block">
+            <span class="pc-label">Market</span>
+            <span class="pc-value market">Restricted</span>
+          </div>
+        </div>
+        <div class="plot-foot">
+          <div class="plot-area"><b>5,800</b> sq.ft</div>
+          <a href="/plots/p-0214-cts9812" class="btn btn-outline" style="padding:8px 14px;font-size:13px">Due-diligence →</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<div class="how">
+<section class="section" id="how">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow-sec">How it works</span>
+      <h2 class="h2">From search to <em>signed deed</em> in 4 steps</h2>
+      <p class="lead">Whether you're a buyer, builder, or lawyer — the workflow is the same.</p>
+    </div>
+  </div>
+  <div class="how-grid">
+    <div class="how-step fu"><div class="num">STEP 01</div><h4>Search village / Gat</h4><p>Auto-complete across 44,142 villages. Paste a Gat No. or drop a map pin.</p></div>
+    <div class="how-step fu"><div class="num">STEP 02</div><h4>See live records</h4><p>7/12, 8A, property card, DP zone, Ready Reckoner — fetched on demand.</p></div>
+    <div class="how-step fu"><div class="num">STEP 03</div><h4>Compare value</h4><p>Government ASR vs market — flagged if deviation is over 30%.</p></div>
+    <div class="how-step fu"><div class="num">STEP 04</div><h4>Connect experts</h4><p>Verified lawyer, surveyor or agent via WhatsApp for ₹500 token.</p></div>
+  </div>
+</section>
+</div>
+
+<!-- ── SERVICES ── -->
+<section class="section" id="services">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow-sec">Professional services</span>
+      <h2 class="h2">Due diligence, <em>NA conversion</em>, valuation</h2>
+      <p class="lead">Land teams trust us for the boring parts — so builders and buyers can move fast.</p>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="svc-card fu">
+      <div class="svc-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 6-9 10-9 10s-9-4-9-10V5l9-3 9 3v7z"/></svg>
+      </div>
+      <h3>Title Due Diligence</h3>
+      <p>Full chain-of-title, encumbrance, Ferfar history up to 30 years — signed by a Maharashtra advocate.</p>
+      <ul class="svc-list">
+        <li>30-year Ferfar search</li>
+        <li>Encumbrance Certificate</li>
+        <li>Litigation check + written opinion</li>
+      </ul>
+      <a href="/services/due-diligence" class="btn btn-primary">From ₹4,999 →</a>
+    </div>
+    <div class="svc-card fu">
+      <div class="svc-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+      </div>
+      <h3>NA Conversion Support</h3>
+      <p>Agri to NA conversion — documentation, tahsildar liaison, online tracking, timeline visibility.</p>
+      <ul class="svc-list">
+        <li>Collector / Tahsildar filings</li>
+        <li>Zone verification (DP / TP)</li>
+        <li>Typical TAT: 90-120 days</li>
+      </ul>
+      <a href="/services/na-conversion" class="btn btn-primary">Get quote →</a>
+    </div>
+    <div class="svc-card fu">
+      <div class="svc-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 12h14M6 6l12 12M18 6 6 18"/></svg>
+      </div>
+      <h3>Market Valuation</h3>
+      <p>Bank-grade valuation report — Ready Reckoner + comparable transactions + site visit.</p>
+      <ul class="svc-list">
+        <li>ASR + 12-month comparables</li>
+        <li>Loan-ready PDF report</li>
+        <li>IBA-empaneled valuer options</li>
+      </ul>
+      <a href="/services/valuation" class="btn btn-primary">From ₹2,499 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="section" id="testimonials">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow-sec">Trusted by</span>
+      <h2 class="h2">Nashik's builders, lawyers &amp; <em>first-time buyers</em></h2>
+    </div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi fu">
+      <div class="stars">★★★★★</div>
+      <p class="testi-quote">"Saved me two trips to the Tahsildar office. 7/12 and Ferfar pulled up clean. Found a title issue we would have missed."</p>
+      <div class="testi-author">
+        <div class="avatar">AK</div>
+        <div><div class="author-name">Adv. Anjali Kulkarni</div><div class="author-role">Property Lawyer · Nashik Bar</div></div>
+      </div>
+    </div>
+    <div class="testi fu">
+      <div class="stars">★★★★★</div>
+      <p class="testi-quote">"Zone checker alone paid for the annual plan — we caught a school reservation on a plot that was already in ATS."</p>
+      <div class="testi-author">
+        <div class="avatar">RP</div>
+        <div><div class="author-name">Rohit Patil</div><div class="author-role">Founder · Patil Developers</div></div>
+      </div>
+    </div>
+    <div class="testi fu">
+      <div class="stars">★★★★★</div>
+      <p class="testi-quote">"First-time buyer. Comparing govt vs market value was a revelation — negotiated ₹6 lakh off."</p>
+      <div class="testi-author">
+        <div class="avatar">SM</div>
+        <div><div class="author-name">Sneha More</div><div class="author-role">IT Professional · Pune</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ── -->
+<section class="cta-band">
+  <div class="cta-inner">
+    <h2>Check any plot — <span style="background:linear-gradient(90deg,#7DD3FC,#34D399);-webkit-background-clip:text;background-clip:text;color:transparent">it's free</span> to start</h2>
+    <p>7/12, Zone, Ready Reckoner — at no cost. Pay only when you need expert help.</p>
+    <div class="cta-row">
+      <a href="/signup" class="btn btn-accent">Start Free Search</a>
+      <a href="https://wa.me/919999999999?text=Hi%20PlotTrust%2C%20I%20want%20to%20check%20a%20plot" class="btn btn-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.88 9.88 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.22 8.22 0 0 1 12.75-10.1 8.17 8.17 0 0 1 2.41 5.83c0 4.55-3.71 8.25-8.26 8.25z"/></svg>
+        Ask on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="brand" style="color:#fff">
+        <span class="brand-mark">PT</span>
+        PlotTrust
+      </div>
+      <p class="footer-tagline">Maharashtra's trust layer for land — verified village data, 7/12, DP/TP zones, RERA and Ready Reckoner in one searchable platform.</p>
+      <div class="footer-contact">
+        <span>📍 College Road, Nashik — 422005</span>
+        <a href="tel:+919999999999">📞 +91 99999 99999</a>
+        <a href="mailto:hello@plottrust.in">✉ hello@plottrust.in</a>
+      </div>
+    </div>
+    <div>
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="/search">Find Plots</a></li>
+        <li><a href="/tools/712">7/12 Lookup</a></li>
+        <li><a href="/tools/zone">Zone Checker</a></li>
+        <li><a href="/tools/ready-reckoner">Ready Reckoner</a></li>
+        <li><a href="/tools/udcpr">UDCPR Calculator</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Services</h5>
+      <ul>
+        <li><a href="/services/due-diligence">Title Due Diligence</a></li>
+        <li><a href="/services/na-conversion">NA Conversion</a></li>
+        <li><a href="/services/valuation">Market Valuation</a></li>
+        <li><a href="/services/rera">RERA Registration</a></li>
+        <li><a href="/dashboard">For Professionals</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <ul>
+        <li><a href="/about">About PlotTrust</a></li>
+        <li><a href="/partners">Partner with us</a></li>
+        <li><a href="/blog">Land Records Blog</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <span>© 2026 PlotTrust · Nashik, Maharashtra · CIN: U72XXXMH2024PTCXXXXXX</span>
+    <span>Made with care for Maharashtra's land ecosystem</span>
+  </div>
+  <div class="footer-gov">
+    <span>🏛 Official sources:</span>
+    <a href="https://bhulekh.mahabhumi.gov.in" target="_blank" rel="noopener">Mahabhulekh</a>
+    <a href="https://mahabhunakasha.mahabhumi.gov.in" target="_blank" rel="noopener">Bhunaksha</a>
+    <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener">MahaRERA</a>
+    <a href="https://igrmaharashtra.gov.in" target="_blank" rel="noopener">IGR Maharashtra</a>
+    <a href="https://dtp.maharashtra.gov.in/acts-rules/" target="_blank" rel="noopener">UDCPR 2020</a>
+  </div>
+  <div class="footer-disc">
+    <b>Disclaimer:</b> PlotTrust.in is a discovery &amp; analysis platform. Official documents must be verified from government sources. We are not a registered broker and do not charge brokerage on listings. <span class="mr">सरकारी अधिकृत दस्तऐवज हेच अंतिम मानले जातील.</span>
+  </div>
+</footer>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<a href="https://wa.me/919999999999?text=Hi%20PlotTrust%2C%20I%20want%20to%20check%20a%20plot" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.88 9.88 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.22 8.22 0 0 1 12.75-10.1 8.17 8.17 0 0 1 2.41 5.83c0 4.55-3.71 8.25-8.26 8.25z"/></svg>
+  <span>WhatsApp us</span>
+</a>
+
+<script>
+/* ─── Mobile menu ─── */
+const toggle=document.getElementById('navToggle'),sheet=document.getElementById('mobileSheet');
+toggle?.addEventListener('click',()=>{const open=sheet.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});
+
+/* ─── Chips ─── */
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.classList.remove('is-on'));
+  c.classList.add('is-on');
+}));
+
+/* ─── Search ─── */
+function doSearch(){
+  const q=document.getElementById('searchInput').value.trim();
+  const cat=document.getElementById('searchCat').value;
+  if(!q){document.getElementById('searchInput').focus();return}
+  window.location.href=`/search?cat=${cat}&q=${encodeURIComponent(q)}`;
+}
+
+/* ─── Reveal-on-scroll ─── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fu').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

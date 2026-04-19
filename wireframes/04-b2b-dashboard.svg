@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1200" font-family="Inter,system-ui,sans-serif">
+  <defs>
+    <style>
+      .bg{fill:#F8FAFC}
+      .card{fill:#FFFFFF;stroke:#E2E8F0;stroke-width:1}
+      .ink{fill:#0F172A}
+      .muted{fill:#64748B}
+      .brand{fill:#0F4C81}
+      .label{font-size:11px;fill:#94A3B8;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+      text{font-family:Inter,system-ui,sans-serif}
+    </style>
+  </defs>
+
+  <rect width="1440" height="1200" class="bg"/>
+
+  <!-- Title strip -->
+  <rect x="0" y="0" width="1440" height="40" fill="#0F172A"/>
+  <text x="24" y="26" fill="#F8FAFC" font-size="13" font-weight="700">Wireframe · B2B Professional Dashboard (1440w) — for builders / lawyers / agents</text>
+  <text x="1416" y="26" text-anchor="end" fill="#94A3B8" font-size="12">app.plottrust.in</text>
+
+  <!-- SIDEBAR -->
+  <rect x="0" y="40" width="240" height="1160" fill="#0A2647"/>
+  <!-- Brand -->
+  <rect x="20" y="60" width="32" height="32" rx="7" fill="#1466A5"/>
+  <text x="36" y="81" fill="#fff" font-size="12" font-weight="800" text-anchor="middle">PT</text>
+  <text x="62" y="82" fill="#fff" font-size="15" font-weight="800">PlotTrust · Pro</text>
+
+  <!-- Nav items -->
+  <g font-size="13" fill="#C7DCEE">
+    <rect x="12" y="120" width="216" height="36" rx="8" fill="rgba(255,255,255,.1)"/>
+    <text x="28" y="144" fill="#fff" font-weight="700">⚡ Dashboard</text>
+    <text x="28" y="184" fill="#C7DCEE">📄 7/12 Lookup</text>
+    <text x="28" y="220" fill="#C7DCEE">🗺 Zone Checker</text>
+    <text x="28" y="256" fill="#C7DCEE">₹  Ready Reckoner</text>
+    <text x="28" y="292" fill="#C7DCEE">📐 UDCPR Calculator</text>
+    <text x="28" y="328" fill="#C7DCEE">📚 Ferfar History</text>
+    <text x="28" y="364" fill="#C7DCEE">📋 Bulk Lookups</text>
+    <text x="28" y="400" fill="#C7DCEE">💼 My Cases</text>
+    <text x="28" y="436" fill="#C7DCEE">🧾 Reports (PDF)</text>
+    <text x="28" y="472" fill="#C7DCEE">🔗 API / Webhooks</text>
+    <text x="28" y="508" fill="#C7DCEE">👥 Team (3)</text>
+  </g>
+
+  <!-- Bottom user -->
+  <rect x="12" y="1080" width="216" height="72" rx="10" fill="rgba(255,255,255,.06)"/>
+  <circle cx="40" cy="1116" r="16" fill="#F97316"/>
+  <text x="40" y="1121" text-anchor="middle" fill="#fff" font-size="11" font-weight="800">S</text>
+  <text x="66" y="1114" fill="#fff" font-size="13" font-weight="700">Sagar Patil</text>
+  <text x="66" y="1130" fill="#94A3B8" font-size="11">Patil Developers · Pro</text>
+  <text x="202" y="1121" fill="#94A3B8" font-size="14">⚙</text>
+
+  <!-- TOP BAR -->
+  <rect x="240" y="40" width="1200" height="60" fill="#fff" stroke="#E2E8F0"/>
+  <text x="268" y="76" class="ink" font-family="Plus Jakarta Sans,Inter" font-size="20" font-weight="800">Welcome back, Sagar</text>
+  <!-- Search -->
+  <rect x="600" y="56" width="420" height="32" rx="8" fill="#F1F5F9"/>
+  <text x="616" y="76" fill="#94A3B8" font-size="12">⌘K · Search village, Gat No., CTS, case…</text>
+  <!-- Credits -->
+  <rect x="1056" y="56" width="140" height="32" rx="8" fill="#ECFDF5" stroke="#A7F3D0"/>
+  <text x="1126" y="76" text-anchor="middle" fill="#047857" font-size="12" font-weight="700">Credits: 420 · Top up</text>
+  <!-- Notif / avatar -->
+  <circle cx="1240" cy="72" r="12" fill="#F8FAFC"/>
+  <text x="1240" y="76" text-anchor="middle" font-size="13">🔔</text>
+  <rect x="1268" y="56" width="160" height="32" rx="8" fill="#0F4C81"/>
+  <text x="1348" y="76" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">+ New Lookup</text>
+
+  <!-- MAIN -->
+  <!-- KPI CARDS -->
+  <g transform="translate(268,130)">
+    <rect x="0" y="0" width="270" height="100" rx="12" fill="#fff" stroke="#E2E8F0"/>
+    <text x="20" y="28" class="label">LOOKUPS THIS MONTH</text>
+    <text x="20" y="68" class="ink" font-family="Plus Jakarta Sans" font-size="30" font-weight="800">184</text>
+    <text x="20" y="88" fill="#047857" font-size="11" font-weight="700">▲ 23% vs last month</text>
+
+    <g transform="translate(290,0)">
+      <rect x="0" y="0" width="270" height="100" rx="12" fill="#fff" stroke="#E2E8F0"/>
+      <text x="20" y="28" class="label">CASES IN PROGRESS</text>
+      <text x="20" y="68" class="ink" font-family="Plus Jakarta Sans" font-size="30" font-weight="800">12</text>
+      <text x="20" y="88" class="muted" font-size="11">3 awaiting Tahsildar</text>
+    </g>
+    <g transform="translate(580,0)">
+      <rect x="0" y="0" width="270" height="100" rx="12" fill="#fff" stroke="#E2E8F0"/>
+      <text x="20" y="28" class="label">AVG RESPONSE TIME</text>
+      <text x="20" y="68" class="ink" font-family="Plus Jakarta Sans" font-size="30" font-weight="800">1.4s</text>
+      <text x="20" y="88" fill="#047857" font-size="11" font-weight="700">✓ 99.2% uptime</text>
+    </g>
+    <g transform="translate(870,0)">
+      <rect x="0" y="0" width="302" height="100" rx="12" fill="#0F4C81"/>
+      <text x="20" y="28" fill="#93C5FD" class="label">MONTH-TO-DATE BILL</text>
+      <text x="20" y="68" fill="#fff" font-family="Plus Jakarta Sans" font-size="30" font-weight="800">₹8,420</text>
+      <text x="20" y="88" fill="#C7DCEE" font-size="11">Auto-debit on 30 Apr</text>
+    </g>
+  </g>
+
+  <!-- TWO-COLUMN SECTION -->
+  <!-- Left: Quick Lookup -->
+  <rect x="268" y="258" width="560" height="360" rx="14" fill="#fff" stroke="#E2E8F0"/>
+  <text x="288" y="288" class="label">QUICK 7/12 LOOKUP</text>
+  <text x="288" y="316" class="ink" font-family="Plus Jakarta Sans" font-size="22" font-weight="800">Fetch Satbara in 1.4 seconds</text>
+  <!-- Form -->
+  <text x="288" y="358" class="muted" font-size="11" font-weight="600">DISTRICT</text>
+  <rect x="288" y="366" width="240" height="38" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="300" y="390" class="ink" font-size="13">Nashik ▾</text>
+  <text x="548" y="358" class="muted" font-size="11" font-weight="600">TALUKA</text>
+  <rect x="548" y="366" width="240" height="38" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="560" y="390" class="ink" font-size="13">Nashik Tal ▾</text>
+
+  <text x="288" y="428" class="muted" font-size="11" font-weight="600">VILLAGE (गाव)</text>
+  <rect x="288" y="436" width="240" height="38" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="300" y="460" class="ink" font-size="13">Gangapur ▾</text>
+  <text x="548" y="428" class="muted" font-size="11" font-weight="600">GAT / SURVEY NO.</text>
+  <rect x="548" y="436" width="240" height="38" rx="6" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <text x="560" y="460" class="ink" font-size="13" font-family="JetBrains Mono">142/2-A</text>
+
+  <rect x="288" y="500" width="240" height="44" rx="8" fill="#0F4C81"/>
+  <text x="408" y="527" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">🔍 Fetch 7/12 (1 credit)</text>
+  <rect x="538" y="500" width="144" height="44" rx="8" fill="#fff" stroke="#0F4C81" stroke-width="1.4"/>
+  <text x="610" y="527" text-anchor="middle" fill="#0F4C81" font-size="13" font-weight="700">Bulk (CSV)</text>
+  <text x="288" y="580" class="muted" font-size="11">💡 1 credit = 1 lookup. Bulk discount 30% at 500+</text>
+
+  <!-- Right: Recent Lookups -->
+  <rect x="848" y="258" width="568" height="360" rx="14" fill="#fff" stroke="#E2E8F0"/>
+  <text x="868" y="288" class="label">RECENT LOOKUPS</text>
+  <text x="1408" y="288" text-anchor="end" fill="#0F4C81" font-size="12" font-weight="700">View all →</text>
+
+  <!-- Rows -->
+  <g transform="translate(868,308)" font-size="13">
+    <line x1="0" y1="0" x2="528" y2="0" stroke="#F1F5F9"/>
+    <g transform="translate(0,24)">
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="#ECFDF5"/>
+      <text x="8" y="12" text-anchor="middle" fill="#047857" font-size="10">✓</text>
+      <text x="28" y="13" class="ink" font-size="13" font-weight="700">Gangapur · Gat 142/2-A</text>
+      <text x="28" y="30" class="muted" font-size="11">7/12 fetched · 17 Apr, 14:28</text>
+      <rect x="390" y="4" width="60" height="20" rx="4" fill="#ECFDF5"/>
+      <text x="420" y="18" text-anchor="middle" fill="#047857" font-size="10" font-weight="700">Clean</text>
+      <text x="500" y="18" text-anchor="end" class="muted" font-size="11">1.4s</text>
+    </g>
+    <line x1="0" y1="60" x2="528" y2="60" stroke="#F1F5F9"/>
+    <g transform="translate(0,84)">
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="#FEF3C7"/>
+      <text x="8" y="12" text-anchor="middle" fill="#92400E" font-size="10">⚠</text>
+      <text x="28" y="13" class="ink" font-size="13" font-weight="700">Shirwade · Gat 77/1</text>
+      <text x="28" y="30" class="muted" font-size="11">Ferfar pending · 17 Apr, 12:10</text>
+      <rect x="370" y="4" width="80" height="20" rx="4" fill="#FEF3C7"/>
+      <text x="410" y="18" text-anchor="middle" fill="#92400E" font-size="10" font-weight="700">Review ferfar</text>
+      <text x="500" y="18" text-anchor="end" class="muted" font-size="11">1.9s</text>
+    </g>
+    <line x1="0" y1="120" x2="528" y2="120" stroke="#F1F5F9"/>
+    <g transform="translate(0,144)">
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="#FEE2E2"/>
+      <text x="8" y="12" text-anchor="middle" fill="#DC2626" font-size="10">✗</text>
+      <text x="28" y="13" class="ink" font-size="13" font-weight="700">Makhmalabad · Svy 214</text>
+      <text x="28" y="30" class="muted" font-size="11">DP reservation (School) · 16 Apr</text>
+      <rect x="370" y="4" width="80" height="20" rx="4" fill="#FEE2E2"/>
+      <text x="410" y="18" text-anchor="middle" fill="#DC2626" font-size="10" font-weight="700">Blocked</text>
+      <text x="500" y="18" text-anchor="end" class="muted" font-size="11">2.1s</text>
+    </g>
+    <line x1="0" y1="180" x2="528" y2="180" stroke="#F1F5F9"/>
+    <g transform="translate(0,204)">
+      <rect x="0" y="0" width="16" height="16" rx="3" fill="#ECFDF5"/>
+      <text x="8" y="12" text-anchor="middle" fill="#047857" font-size="10">✓</text>
+      <text x="28" y="13" class="ink" font-size="13" font-weight="700">Ashoka Marg · CTS 9812</text>
+      <text x="28" y="30" class="muted" font-size="11">Property Card · 15 Apr</text>
+      <rect x="390" y="4" width="60" height="20" rx="4" fill="#ECFDF5"/>
+      <text x="420" y="18" text-anchor="middle" fill="#047857" font-size="10" font-weight="700">Clean</text>
+      <text x="500" y="18" text-anchor="end" class="muted" font-size="11">1.3s</text>
+    </g>
+  </g>
+
+  <!-- BOTTOM: TWO SIDE-BY-SIDE CARDS -->
+  <!-- Zone Map -->
+  <rect x="268" y="648" width="560" height="360" rx="14" fill="#fff" stroke="#E2E8F0"/>
+  <text x="288" y="678" class="label">DP / TP ZONE MAP</text>
+  <text x="288" y="706" class="ink" font-family="Plus Jakarta Sans" font-size="20" font-weight="800">Nashik Draft DP 2036</text>
+  <rect x="288" y="730" width="520" height="244" rx="10" fill="#E2E8F0"/>
+  <text x="548" y="858" text-anchor="middle" class="muted" font-size="14">[ Leaflet / Mapbox — Draft DP Overlay ]</text>
+  <!-- legend -->
+  <rect x="296" y="738" width="10" height="10" fill="#16A34A"/>
+  <text x="312" y="748" class="ink" font-size="10" font-weight="600">Residential</text>
+  <rect x="378" y="738" width="10" height="10" fill="#F59E0B"/>
+  <text x="394" y="748" class="ink" font-size="10" font-weight="600">Agri / Mixed</text>
+  <rect x="460" y="738" width="10" height="10" fill="#DC2626"/>
+  <text x="476" y="748" class="ink" font-size="10" font-weight="600">Reserved / No-build</text>
+  <rect x="568" y="738" width="10" height="10" fill="#1466A5"/>
+  <text x="584" y="748" class="ink" font-size="10" font-weight="600">DP Road</text>
+
+  <!-- Team Activity -->
+  <rect x="848" y="648" width="568" height="360" rx="14" fill="#fff" stroke="#E2E8F0"/>
+  <text x="868" y="678" class="label">TEAM ACTIVITY</text>
+  <text x="868" y="706" class="ink" font-family="Plus Jakarta Sans" font-size="20" font-weight="800">Last 24 hours</text>
+
+  <g transform="translate(868,736)" font-size="13">
+    <g>
+      <circle cx="12" cy="12" r="12" fill="#0F4C81"/>
+      <text x="12" y="16" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">AK</text>
+      <text x="32" y="10" class="ink" font-weight="700">Adv. Anjali</text>
+      <text x="32" y="26" class="muted" font-size="11">Downloaded Ferfar (Gat 142/2) · 10m ago</text>
+    </g>
+    <g transform="translate(0,56)">
+      <circle cx="12" cy="12" r="12" fill="#047857"/>
+      <text x="12" y="16" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">RP</text>
+      <text x="32" y="10" class="ink" font-weight="700">Rohit (partner)</text>
+      <text x="32" y="26" class="muted" font-size="11">Shared case #4812 with you · 42m ago</text>
+    </g>
+    <g transform="translate(0,112)">
+      <circle cx="12" cy="12" r="12" fill="#F97316"/>
+      <text x="12" y="16" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">SP</text>
+      <text x="32" y="10" class="ink" font-weight="700">Swapnil (surveyor)</text>
+      <text x="32" y="26" class="muted" font-size="11">Uploaded boundary survey PDF · 2h ago</text>
+    </g>
+    <g transform="translate(0,168)">
+      <circle cx="12" cy="12" r="12" fill="#1466A5"/>
+      <text x="12" y="16" text-anchor="middle" fill="#fff" font-size="10" font-weight="800">PT</text>
+      <text x="32" y="10" class="ink" font-weight="700">PlotTrust system</text>
+      <text x="32" y="26" class="muted" font-size="11">MahaRERA index re-indexed · 4h ago</text>
+    </g>
+  </g>
+  <rect x="868" y="948" width="160" height="34" rx="6" fill="#fff" stroke="#0F4C81" stroke-width="1.4"/>
+  <text x="948" y="970" text-anchor="middle" fill="#0F4C81" font-size="12" font-weight="700">Invite teammate</text>
+
+  <!-- FOOTER NOTE -->
+  <text x="268" y="1050" class="muted" font-size="11">Dashboard adapts to role: Lawyer sees Case Pipeline · Builder sees Project Board · Agent sees Listings + Enquiries</text>
+
+</svg>

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 2600" font-family="Inter,system-ui,sans-serif">
+  <defs>
+    <style>
+      .bg{fill:#F8FAFC}
+      .card{fill:#FFFFFF;stroke:#E2E8F0;stroke-width:1}
+      .chip{fill:#F1F5F9;stroke:#CBD5E1;stroke-width:.8}
+      .brand{fill:#0F4C81}
+      .accent{fill:#F97316}
+      .green{fill:#047857}
+      .ink{fill:#0F172A}
+      .muted{fill:#64748B}
+      .dark{fill:#0A2647}
+      .line{stroke:#CBD5E1;stroke-width:1;stroke-dasharray:4 3;fill:none}
+      .label{font-size:11px;fill:#94A3B8;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+      .note{font-size:12px;fill:#64748B}
+      .tag{font-size:11px;font-weight:700}
+      text{font-family:Inter,system-ui,sans-serif}
+    </style>
+  </defs>
+
+  <!-- Canvas -->
+  <rect width="1440" height="2600" class="bg"/>
+
+  <!-- Title / Annotation strip -->
+  <rect x="0" y="0" width="1440" height="40" fill="#0F172A"/>
+  <text x="24" y="26" fill="#F8FAFC" font-size="13" font-weight="700">Wireframe · Desktop Home (1440w)</text>
+  <text x="1416" y="26" text-anchor="end" fill="#94A3B8" font-size="12">PlotTrust Redesign v3 · April 2026</text>
+
+  <!-- Top info bar -->
+  <rect x="0" y="40" width="1440" height="32" fill="#0A2647"/>
+  <text x="80" y="61" fill="#C7DCEE" font-size="11">● MahaRERA-aware   · UDCPR 2020   · 44,142 villages</text>
+  <text x="1360" y="61" text-anchor="end" fill="#C7DCEE" font-size="11">📞 +91 99999 99999    hello@plottrust.in</text>
+
+  <!-- NAV -->
+  <rect x="0" y="72" width="1440" height="60" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <!-- Logo -->
+  <rect x="80" y="92" width="28" height="28" rx="6" fill="#0F4C81"/>
+  <text x="92" y="111" fill="#fff" font-size="11" font-weight="800" text-anchor="middle">PT</text>
+  <text x="118" y="112" class="ink" font-size="16" font-weight="800">PlotTrust</text>
+  <!-- Nav links -->
+  <g font-size="13" fill="#334155" font-weight="500">
+    <rect x="240" y="94" width="88" height="26" rx="6" fill="#EEF5FB"/>
+    <text x="284" y="112" text-anchor="middle" fill="#0F4C81" font-weight="700">Find Plots</text>
+    <text x="365" y="112" text-anchor="middle">7/12 Lookup</text>
+    <text x="460" y="112" text-anchor="middle">Zone Checker</text>
+    <text x="560" y="112" text-anchor="middle">Ready Reckoner</text>
+    <text x="660" y="112" text-anchor="middle">Services</text>
+    <text x="730" y="112" text-anchor="middle">Guide</text>
+  </g>
+  <!-- Right buttons -->
+  <rect x="1180" y="92" width="68" height="28" rx="6" fill="#fff" stroke="#0F4C81" stroke-width="1.3"/>
+  <text x="1214" y="110" text-anchor="middle" fill="#0F4C81" font-size="12" font-weight="700">Login</text>
+  <rect x="1256" y="92" width="96" height="28" rx="6" fill="#0F4C81"/>
+  <text x="1304" y="110" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Start Free</text>
+
+  <!-- HERO -->
+  <rect x="0" y="132" width="1440" height="520" fill="#0A2647"/>
+  <!-- Grid overlay hint -->
+  <g stroke="rgba(255,255,255,.04)" stroke-width="1">
+    <line x1="80" y1="132" x2="80" y2="652"/>
+    <line x1="520" y1="132" x2="520" y2="652"/>
+    <line x1="920" y1="132" x2="920" y2="652"/>
+    <line x1="1360" y1="132" x2="1360" y2="652"/>
+  </g>
+  <!-- Eyebrow -->
+  <rect x="80" y="192" width="360" height="26" rx="13" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.2)"/>
+  <circle cx="98" cy="205" r="3" fill="#4ADE80"/>
+  <text x="110" y="209" fill="#D9E8F5" font-size="11" font-weight="700" letter-spacing="1.5">BUILT FOR MAHARASHTRA · NASHIK · PUNE · KOLHAPUR</text>
+  <!-- H1 -->
+  <text x="80" y="268" fill="#fff" font-family="Plus Jakarta Sans,Inter" font-size="44" font-weight="800">Find verified plots with</text>
+  <text x="80" y="320" font-family="Plus Jakarta Sans,Inter" font-size="44" font-weight="800">
+    <tspan fill="#7DD3FC">7/12, Zone &amp; Ready Reckoner</tspan>
+    <tspan fill="#fff"> — one place</tspan>
+  </text>
+  <!-- Sub -->
+  <text x="80" y="354" fill="#C7DCEE" font-size="15">Search by village, Gat Number, Survey Number, or RERA project. Every listing</text>
+  <text x="80" y="375" fill="#C7DCEE" font-size="15">shows land type, DP zone, government value vs market — before you enquire.</text>
+
+  <!-- Search box -->
+  <rect x="80" y="410" width="680" height="64" rx="14" fill="#fff" stroke="#CBD5E1"/>
+  <rect x="92" y="422" width="130" height="40" rx="8" fill="#F1F5F9"/>
+  <text x="108" y="446" fill="#0F172A" font-size="13" font-weight="700">Village ▾</text>
+  <text x="244" y="446" fill="#94A3B8" font-size="14">e.g., Gangapur, Gat 142/2, P51600…</text>
+  <rect x="630" y="422" width="118" height="40" rx="8" fill="#F97316"/>
+  <text x="689" y="446" text-anchor="middle" fill="#fff" font-size="13" font-weight="800">🔍  Search</text>
+
+  <!-- Quick chips -->
+  <g font-size="12" fill="#E2EEFA" font-weight="500">
+    <rect x="80" y="492" width="90" height="28" rx="14" fill="#fff"/>
+    <text x="125" y="510" fill="#0F4C81" font-weight="700" text-anchor="middle">NA Plots</text>
+    <rect x="178" y="492" width="110" height="28" rx="14" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)"/>
+    <text x="233" y="510" text-anchor="middle">Agriculture</text>
+    <rect x="296" y="492" width="120" height="28" rx="14" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)"/>
+    <text x="356" y="510" text-anchor="middle">RERA Verified</text>
+    <rect x="424" y="492" width="110" height="28" rx="14" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)"/>
+    <text x="479" y="510" text-anchor="middle">Under ₹50L</text>
+    <rect x="542" y="492" width="130" height="28" rx="14" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.18)"/>
+    <text x="607" y="510" text-anchor="middle">School Reserved</text>
+  </g>
+
+  <!-- Trust line -->
+  <text x="80" y="568" fill="#B6CBDF" font-size="13">✓ Village-level data     ◆ iGR + Mahabhumi sources     🛡 No brokerage on listings</text>
+
+  <!-- Stats card (right) -->
+  <rect x="920" y="192" width="440" height="316" rx="16" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/>
+  <!-- 2x2 grid -->
+  <rect x="940" y="212" width="200" height="100" rx="12" fill="rgba(255,255,255,.06)"/>
+  <text x="956" y="250" fill="#fff" font-size="26" font-weight="800">44,142</text>
+  <text x="956" y="286" fill="#B6CBDF" font-size="12">Villages mapped</text>
+
+  <rect x="1150" y="212" width="200" height="100" rx="12" fill="rgba(255,255,255,.06)"/>
+  <text x="1166" y="250" fill="#fff" font-size="26" font-weight="800">9,809</text>
+  <text x="1166" y="286" fill="#B6CBDF" font-size="12">RERA projects</text>
+
+  <rect x="940" y="322" width="200" height="100" rx="12" fill="rgba(255,255,255,.06)"/>
+  <text x="956" y="360" fill="#fff" font-size="26" font-weight="800">1.2M+</text>
+  <text x="956" y="396" fill="#B6CBDF" font-size="12">7/12 records</text>
+
+  <rect x="1150" y="322" width="200" height="100" rx="12" fill="rgba(255,255,255,.06)"/>
+  <text x="1166" y="360" fill="#fff" font-size="26" font-weight="800">₹2.8 Cr</text>
+  <text x="1166" y="396" fill="#B6CBDF" font-size="12">Median Nashik plot</text>
+
+  <!-- Live ticker -->
+  <rect x="940" y="440" width="410" height="52" rx="10" fill="rgba(0,0,0,.25)" stroke="rgba(255,255,255,.06)"/>
+  <circle cx="960" cy="466" r="4" fill="#4ADE80"/>
+  <text x="974" y="471" fill="#C7DCEE" font-size="12">Live: New 7/12 fetched for Gat 142/2, Shirwade</text>
+
+  <!-- TOOLS STRIP -->
+  <rect x="0" y="652" width="1440" height="120" fill="#fff" stroke="#E2E8F0"/>
+  <g transform="translate(80,672)">
+    <!-- 4 tool tiles -->
+    <g>
+      <rect x="0" y="0" width="310" height="80" rx="12" fill="#fff" stroke="#E2E8F0"/>
+      <rect x="16" y="16" width="42" height="42" rx="10" fill="#EEF5FB"/>
+      <text x="37" y="43" text-anchor="middle" fill="#0F4C81" font-size="16">📄</text>
+      <text x="72" y="35" class="ink" font-size="15" font-weight="700">7/12 Extract</text>
+      <text x="72" y="55" class="muted" font-size="12">Satbara in seconds by village + Gat No.</text>
+    </g>
+    <g transform="translate(326,0)">
+      <rect x="0" y="0" width="310" height="80" rx="12" fill="#fff" stroke="#E2E8F0"/>
+      <rect x="16" y="16" width="42" height="42" rx="10" fill="#EEF5FB"/>
+      <text x="37" y="43" text-anchor="middle" fill="#0F4C81" font-size="16">🗺</text>
+      <text x="72" y="35" class="ink" font-size="15" font-weight="700">DP / TP Zone</text>
+      <text x="72" y="55" class="muted" font-size="12">Red, Yellow, Green — reservation check.</text>
+    </g>
+    <g transform="translate(652,0)">
+      <rect x="0" y="0" width="310" height="80" rx="12" fill="#fff" stroke="#E2E8F0"/>
+      <rect x="16" y="16" width="42" height="42" rx="10" fill="#EEF5FB"/>
+      <text x="37" y="43" text-anchor="middle" fill="#0F4C81" font-size="16">₹</text>
+      <text x="72" y="35" class="ink" font-size="15" font-weight="700">Ready Reckoner</text>
+      <text x="72" y="55" class="muted" font-size="12">ASR rate + stamp duty estimator.</text>
+    </g>
+    <g transform="translate(978,0)">
+      <rect x="0" y="0" width="310" height="80" rx="12" fill="#fff" stroke="#E2E8F0"/>
+      <rect x="16" y="16" width="42" height="42" rx="10" fill="#EEF5FB"/>
+      <text x="37" y="43" text-anchor="middle" fill="#0F4C81" font-size="16">📐</text>
+      <text x="72" y="35" class="ink" font-size="15" font-weight="700">UDCPR Calc</text>
+      <text x="72" y="55" class="muted" font-size="12">Setback, FSI, buildable area instantly.</text>
+    </g>
+  </g>
+
+  <!-- FEATURED PLOTS SECTION -->
+  <text x="80" y="840" class="label">FEATURED LISTINGS</text>
+  <text x="80" y="888" class="ink" font-family="Plus Jakarta Sans,Inter" font-size="32" font-weight="800">Verified plots with govt &amp; market value</text>
+  <text x="80" y="918" class="muted" font-size="14">Every card shows village, Gat / Survey Number, land type and DP zone — no hidden surprises.</text>
+  <rect x="1168" y="888" width="192" height="40" rx="8" fill="#fff" stroke="#0F4C81" stroke-width="1.3"/>
+  <text x="1264" y="912" text-anchor="middle" fill="#0F4C81" font-size="13" font-weight="700">Browse all 840+ plots →</text>
+
+  <!-- 3 plot cards -->
+  <g transform="translate(80,960)">
+    <!-- Card template used x3 -->
+    <g id="plot-card">
+      <!-- Outer card -->
+      <rect x="0" y="0" width="410" height="440" rx="16" fill="#fff" stroke="#E2E8F0"/>
+      <!-- Image -->
+      <rect x="0" y="0" width="410" height="200" rx="16" fill="#E2E8F0"/>
+      <path d="M 0 200 L 410 200" stroke="#fff"/>
+      <!-- Zone badge -->
+      <rect x="12" y="12" width="110" height="24" rx="12" fill="#16A34A"/>
+      <text x="67" y="28" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">● Green Zone · R-1</text>
+      <!-- Save -->
+      <circle cx="388" cy="24" r="14" fill="#fff"/>
+      <text x="388" y="29" text-anchor="middle" font-size="13">♡</text>
+      <!-- Body -->
+      <text x="20" y="235" class="ink" font-family="Plus Jakarta Sans,Inter" font-size="20" font-weight="800">Gangapur</text>
+      <text x="20" y="256" class="muted" font-size="12">📍 Nashik Tal, Nashik Dist.</text>
+      <!-- Gat row -->
+      <rect x="20" y="270" width="370" height="32" rx="8" fill="#F1F5F9"/>
+      <text x="32" y="291" fill="#64748B" font-size="11" font-weight="600">GAT</text>
+      <text x="58" y="291" class="ink" font-size="12" font-weight="600" font-family="JetBrains Mono,monospace">142 / 2-A</text>
+      <text x="150" y="291" fill="#CBD5E1">·</text>
+      <text x="162" y="291" fill="#64748B" font-size="11" font-weight="600">SURVEY</text>
+      <text x="208" y="291" class="ink" font-size="12" font-weight="600" font-family="JetBrains Mono,monospace">58</text>
+      <!-- Tags -->
+      <rect x="20" y="314" width="38" height="22" rx="4" fill="#ECFDF5"/>
+      <text x="39" y="329" text-anchor="middle" fill="#047857" class="tag">NA</text>
+      <rect x="64" y="314" width="140" height="22" rx="4" fill="#EEF5FB"/>
+      <text x="134" y="329" text-anchor="middle" fill="#0F4C81" class="tag">RERA P51600012345</text>
+      <!-- Price compare -->
+      <rect x="20" y="348" width="370" height="64" rx="10" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="36" y="368" class="label" font-size="10">GOVT (ASR)</text>
+      <text x="36" y="395" class="ink" font-family="Plus Jakarta Sans" font-size="18" font-weight="800">₹42.8L</text>
+      <line x1="205" y1="358" x2="205" y2="402" class="line"/>
+      <text x="220" y="368" class="label" font-size="10">MARKET</text>
+      <text x="220" y="395" fill="#047857" font-family="Plus Jakarta Sans" font-size="18" font-weight="800">₹58.0L</text>
+      <rect x="320" y="352" width="58" height="22" rx="11" fill="#ECFDF5"/>
+      <text x="349" y="367" text-anchor="middle" fill="#047857" font-size="10" font-weight="700">+35% ↑</text>
+      <!-- Foot -->
+      <text x="20" y="428" class="muted" font-size="12">2,400 sq.ft · 223 sq.m</text>
+      <rect x="324" y="410" width="66" height="26" rx="6" fill="#0F4C81"/>
+      <text x="357" y="427" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">View →</text>
+    </g>
+    <use href="#plot-card" x="430" y="0"/>
+    <use href="#plot-card" x="860" y="0"/>
+  </g>
+
+  <!-- HOW IT WORKS -->
+  <rect x="0" y="1440" width="1440" height="320" fill="#fff" stroke="#E2E8F0"/>
+  <text x="80" y="1500" class="label">HOW IT WORKS</text>
+  <text x="80" y="1540" class="ink" font-family="Plus Jakarta Sans,Inter" font-size="30" font-weight="800">From search to signed deed in 4 steps</text>
+
+  <g transform="translate(80,1580)" font-size="13">
+    <rect x="0" y="0" width="1280" height="140" rx="16" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <!-- 4 columns -->
+    <g>
+      <text x="20" y="32" class="brand" font-size="12" font-weight="700">STEP 01</text>
+      <text x="20" y="60" class="ink" font-size="17" font-weight="800">Search village / Gat</text>
+      <text x="20" y="84" class="muted">Auto-complete across</text>
+      <text x="20" y="102" class="muted">44,142 villages.</text>
+    </g>
+    <line x1="320" y1="20" x2="320" y2="120" class="line"/>
+    <g transform="translate(320,0)">
+      <text x="20" y="32" class="brand" font-size="12" font-weight="700">STEP 02</text>
+      <text x="20" y="60" class="ink" font-size="17" font-weight="800">See live records</text>
+      <text x="20" y="84" class="muted">7/12, 8A, property card,</text>
+      <text x="20" y="102" class="muted">DP zone, Ready Reckoner.</text>
+    </g>
+    <line x1="640" y1="20" x2="640" y2="120" class="line"/>
+    <g transform="translate(640,0)">
+      <text x="20" y="32" class="brand" font-size="12" font-weight="700">STEP 03</text>
+      <text x="20" y="60" class="ink" font-size="17" font-weight="800">Compare value</text>
+      <text x="20" y="84" class="muted">Government ASR vs market</text>
+      <text x="20" y="102" class="muted">— flagged if deviation &gt;30%.</text>
+    </g>
+    <line x1="960" y1="20" x2="960" y2="120" class="line"/>
+    <g transform="translate(960,0)">
+      <text x="20" y="32" class="brand" font-size="12" font-weight="700">STEP 04</text>
+      <text x="20" y="60" class="ink" font-size="17" font-weight="800">Connect experts</text>
+      <text x="20" y="84" class="muted">Verified lawyer or surveyor</text>
+      <text x="20" y="102" class="muted">via WhatsApp · ₹500 token.</text>
+    </g>
+  </g>
+
+  <!-- SERVICES -->
+  <text x="80" y="1840" class="label">PROFESSIONAL SERVICES</text>
+  <text x="80" y="1880" class="ink" font-family="Plus Jakarta Sans,Inter" font-size="30" font-weight="800">Due diligence, NA conversion, valuation</text>
+
+  <g transform="translate(80,1920)">
+    <rect x="0" y="0" width="410" height="240" rx="16" fill="#fff" stroke="#E2E8F0"/>
+    <rect x="0" y="0" width="410" height="4" fill="#0F4C81"/>
+    <rect x="20" y="20" width="44" height="44" rx="10" fill="#EEF5FB"/>
+    <text x="42" y="48" text-anchor="middle" fill="#0F4C81" font-size="18">🛡</text>
+    <text x="20" y="98" class="ink" font-size="18" font-weight="800">Title Due Diligence</text>
+    <text x="20" y="122" class="muted" font-size="13">30-year Ferfar · Encumbrance</text>
+    <text x="20" y="140" class="muted" font-size="13">Litigation check · Written opinion</text>
+    <text x="20" y="180" fill="#047857" font-size="12">✓ 30-year Ferfar search</text>
+    <text x="20" y="198" fill="#047857" font-size="12">✓ Encumbrance Certificate</text>
+    <rect x="20" y="210" width="140" height="28" rx="6" fill="#0F4C81"/>
+    <text x="90" y="228" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">From ₹4,999 →</text>
+
+    <g transform="translate(430,0)">
+      <rect x="0" y="0" width="410" height="240" rx="16" fill="#fff" stroke="#E2E8F0"/>
+      <rect x="0" y="0" width="410" height="4" fill="#047857"/>
+      <rect x="20" y="20" width="44" height="44" rx="10" fill="#ECFDF5"/>
+      <text x="42" y="48" text-anchor="middle" fill="#047857" font-size="18">📈</text>
+      <text x="20" y="98" class="ink" font-size="18" font-weight="800">NA Conversion Support</text>
+      <text x="20" y="122" class="muted" font-size="13">Agri → NA · Tahsildar liaison</text>
+      <text x="20" y="140" class="muted" font-size="13">Timeline visibility · 90-120 days</text>
+      <text x="20" y="180" fill="#047857" font-size="12">✓ Collector / Tahsildar filings</text>
+      <text x="20" y="198" fill="#047857" font-size="12">✓ Zone verification (DP / TP)</text>
+      <rect x="20" y="210" width="120" height="28" rx="6" fill="#0F4C81"/>
+      <text x="80" y="228" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Get quote →</text>
+    </g>
+
+    <g transform="translate(860,0)">
+      <rect x="0" y="0" width="410" height="240" rx="16" fill="#fff" stroke="#E2E8F0"/>
+      <rect x="0" y="0" width="410" height="4" fill="#F97316"/>
+      <rect x="20" y="20" width="44" height="44" rx="10" fill="#FEF3C7"/>
+      <text x="42" y="48" text-anchor="middle" fill="#EA580C" font-size="18">📊</text>
+      <text x="20" y="98" class="ink" font-size="18" font-weight="800">Market Valuation</text>
+      <text x="20" y="122" class="muted" font-size="13">ASR + 12-month comparables</text>
+      <text x="20" y="140" class="muted" font-size="13">Loan-ready PDF · IBA-empaneled</text>
+      <text x="20" y="180" fill="#047857" font-size="12">✓ Comparable transactions</text>
+      <text x="20" y="198" fill="#047857" font-size="12">✓ Loan-ready PDF report</text>
+      <rect x="20" y="210" width="140" height="28" rx="6" fill="#0F4C81"/>
+      <text x="90" y="228" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">From ₹2,499 →</text>
+    </g>
+  </g>
+
+  <!-- TESTIMONIALS strip -->
+  <text x="80" y="2240" class="label">TRUSTED BY</text>
+  <text x="80" y="2280" class="ink" font-family="Plus Jakarta Sans,Inter" font-size="26" font-weight="800">Nashik's builders, lawyers &amp; first-time buyers</text>
+
+  <g transform="translate(80,2310)">
+    <rect x="0" y="0" width="405" height="150" rx="14" fill="#fff" stroke="#E2E8F0"/>
+    <text x="20" y="32" fill="#F59E0B" font-size="14">★★★★★</text>
+    <text x="20" y="60" class="ink" font-size="13">"Saved me two trips to the Tahsildar office.</text>
+    <text x="20" y="78" class="ink" font-size="13">7/12 and Ferfar pulled up clean."</text>
+    <circle cx="36" cy="118" r="14" fill="#0F4C81"/>
+    <text x="36" y="123" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">AK</text>
+    <text x="58" y="117" class="ink" font-size="12" font-weight="700">Adv. Anjali Kulkarni</text>
+    <text x="58" y="132" class="muted" font-size="11">Property Lawyer · Nashik Bar</text>
+
+    <use href="#testi" x="425" y="0"/>
+    <g transform="translate(425,0)">
+      <rect x="0" y="0" width="405" height="150" rx="14" fill="#fff" stroke="#E2E8F0"/>
+      <text x="20" y="32" fill="#F59E0B" font-size="14">★★★★★</text>
+      <text x="20" y="60" class="ink" font-size="13">"Zone checker alone paid for the annual plan</text>
+      <text x="20" y="78" class="ink" font-size="13">— school reservation caught on a plot in ATS."</text>
+      <circle cx="36" cy="118" r="14" fill="#0F4C81"/>
+      <text x="36" y="123" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">RP</text>
+      <text x="58" y="117" class="ink" font-size="12" font-weight="700">Rohit Patil</text>
+      <text x="58" y="132" class="muted" font-size="11">Founder · Patil Developers</text>
+    </g>
+    <g transform="translate(850,0)">
+      <rect x="0" y="0" width="405" height="150" rx="14" fill="#fff" stroke="#E2E8F0"/>
+      <text x="20" y="32" fill="#F59E0B" font-size="14">★★★★★</text>
+      <text x="20" y="60" class="ink" font-size="13">"First-time buyer. Govt vs market was a</text>
+      <text x="20" y="78" class="ink" font-size="13">revelation — negotiated ₹6 lakh off."</text>
+      <circle cx="36" cy="118" r="14" fill="#0F4C81"/>
+      <text x="36" y="123" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">SM</text>
+      <text x="58" y="117" class="ink" font-size="12" font-weight="700">Sneha More</text>
+      <text x="58" y="132" class="muted" font-size="11">IT Professional · Pune</text>
+    </g>
+  </g>
+
+  <!-- CTA band -->
+  <rect x="0" y="2490" width="1440" height="110" fill="#0F4C81"/>
+  <text x="720" y="2530" text-anchor="middle" fill="#fff" font-family="Plus Jakarta Sans,Inter" font-size="26" font-weight="800">Check any plot — it's free to start</text>
+  <text x="720" y="2554" text-anchor="middle" fill="#C7DCEE" font-size="13">7/12, Zone, Ready Reckoner — at no cost. Pay only for expert help.</text>
+  <rect x="612" y="2568" width="120" height="28" rx="6" fill="#F97316"/>
+  <text x="672" y="2586" text-anchor="middle" fill="#fff" font-size="12" font-weight="800">Start Free Search</text>
+  <rect x="748" y="2568" width="160" height="28" rx="6" fill="#25D366"/>
+  <text x="828" y="2586" text-anchor="middle" fill="#fff" font-size="12" font-weight="800">💬 Ask on WhatsApp</text>
+
+</svg>

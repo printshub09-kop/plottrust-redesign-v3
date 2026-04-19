@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 2000" font-family="Inter,system-ui,sans-serif">
+  <defs>
+    <style>
+      .bg{fill:#F8FAFC}
+      .card{fill:#FFFFFF;stroke:#E2E8F0;stroke-width:1}
+      .ink{fill:#0F172A}
+      .muted{fill:#64748B}
+      .brand{fill:#0F4C81}
+      .label{font-size:11px;fill:#94A3B8;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+      .note{font-size:12px;fill:#64748B}
+      text{font-family:Inter,system-ui,sans-serif}
+    </style>
+  </defs>
+
+  <rect width="1440" height="2000" class="bg"/>
+
+  <!-- Title strip -->
+  <rect x="0" y="0" width="1440" height="40" fill="#0F172A"/>
+  <text x="24" y="26" fill="#F8FAFC" font-size="13" font-weight="700">Wireframe · Plot Detail Page (1440w)</text>
+  <text x="1416" y="26" text-anchor="end" fill="#94A3B8" font-size="12">PlotTrust Redesign v3</text>
+
+  <!-- NAV placeholder -->
+  <rect x="0" y="40" width="1440" height="60" fill="#fff" stroke="#E2E8F0"/>
+  <rect x="80" y="58" width="28" height="28" rx="6" fill="#0F4C81"/>
+  <text x="92" y="77" fill="#fff" font-size="11" font-weight="800" text-anchor="middle">PT</text>
+  <text x="118" y="78" class="ink" font-size="16" font-weight="800">PlotTrust</text>
+  <text x="1256" y="78" fill="#0F172A" font-size="12">[ Login ]  [ Start Free ]</text>
+
+  <!-- BREADCRUMB -->
+  <text x="80" y="134" class="muted" font-size="12">Home  ›  Search  ›  Nashik  ›  Gangapur  ›  <tspan class="ink" font-weight="700">Gat 142/2-A</tspan></text>
+
+  <!-- Title block -->
+  <text x="80" y="186" class="ink" font-family="Plus Jakarta Sans,Inter" font-size="40" font-weight="800">Gangapur · Gat 142 / 2-A</text>
+  <rect x="80" y="210" width="96" height="26" rx="13" fill="#16A34A"/>
+  <text x="128" y="228" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">● Green · R-1</text>
+  <rect x="186" y="210" width="38" height="26" rx="4" fill="#ECFDF5"/>
+  <text x="205" y="228" text-anchor="middle" fill="#047857" font-size="11" font-weight="700">NA</text>
+  <rect x="234" y="210" width="160" height="26" rx="4" fill="#EEF5FB"/>
+  <text x="314" y="228" text-anchor="middle" fill="#0F4C81" font-size="11" font-weight="700">RERA P51600012345</text>
+  <text x="80" y="256" class="muted" font-size="14">📍 Gangapur Village, Nashik Tal, Nashik Dist., Maharashtra — 422013</text>
+
+  <!-- Right quick-actions -->
+  <rect x="1100" y="196" width="260" height="40" rx="8" fill="#0F4C81"/>
+  <text x="1230" y="222" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Book Expert Call — ₹500</text>
+  <rect x="1100" y="244" width="260" height="40" rx="8" fill="#25D366"/>
+  <text x="1230" y="270" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">💬 WhatsApp Owner</text>
+
+  <!-- MAIN GRID -->
+  <!-- Left column: 880w -->
+  <!-- Right column: 380w -->
+
+  <!-- Gallery / Map -->
+  <rect x="80" y="300" width="880" height="440" rx="14" fill="#E2E8F0" stroke="#CBD5E1"/>
+  <text x="520" y="524" text-anchor="middle" class="muted" font-size="16" font-weight="600">[ Map + Plot Boundary + Bhunaksha Overlay ]</text>
+  <!-- Thumb row -->
+  <rect x="80" y="752" width="100" height="70" rx="6" fill="#CBD5E1" stroke="#94A3B8"/>
+  <rect x="190" y="752" width="100" height="70" rx="6" fill="#CBD5E1" stroke="#94A3B8"/>
+  <rect x="300" y="752" width="100" height="70" rx="6" fill="#CBD5E1" stroke="#94A3B8"/>
+  <rect x="410" y="752" width="100" height="70" rx="6" fill="#CBD5E1" stroke="#94A3B8"/>
+  <text x="130" y="794" text-anchor="middle" class="muted" font-size="10">Satellite</text>
+  <text x="240" y="794" text-anchor="middle" class="muted" font-size="10">Bhunaksha</text>
+  <text x="350" y="794" text-anchor="middle" class="muted" font-size="10">DP Plan</text>
+  <text x="460" y="794" text-anchor="middle" class="muted" font-size="10">Street view</text>
+
+  <!-- KEY FACTS -->
+  <text x="80" y="874" class="label">KEY FACTS</text>
+  <rect x="80" y="890" width="880" height="260" rx="14" fill="#fff" stroke="#E2E8F0"/>
+  <!-- Grid of facts -->
+  <g transform="translate(104,920)" font-family="Inter">
+    <!-- Row 1 -->
+    <g>
+      <text class="label" y="0">VILLAGE (गाव)</text>
+      <text class="ink" font-size="18" font-weight="800" y="26">Gangapur</text>
+    </g>
+    <g transform="translate(210,0)">
+      <text class="label" y="0">GAT NUMBER</text>
+      <text class="ink" font-size="18" font-weight="800" font-family="JetBrains Mono" y="26">142 / 2-A</text>
+    </g>
+    <g transform="translate(420,0)">
+      <text class="label" y="0">SURVEY NUMBER</text>
+      <text class="ink" font-size="18" font-weight="800" font-family="JetBrains Mono" y="26">58</text>
+    </g>
+    <g transform="translate(630,0)">
+      <text class="label" y="0">CTS NUMBER</text>
+      <text class="ink" font-size="18" font-weight="800" font-family="JetBrains Mono" y="26">9812</text>
+    </g>
+    <!-- Row 2 -->
+    <g transform="translate(0,80)">
+      <text class="label" y="0">AREA</text>
+      <text class="ink" font-size="18" font-weight="800" y="26">223 sq.m</text>
+      <text class="muted" font-size="12" y="46">2,400 sq.ft · 0.055 acre</text>
+    </g>
+    <g transform="translate(210,80)">
+      <text class="label" y="0">LAND TYPE</text>
+      <text class="ink" font-size="18" font-weight="800" y="26">NA (Residential)</text>
+    </g>
+    <g transform="translate(420,80)">
+      <text class="label" y="0">DP ZONE</text>
+      <text class="ink" font-size="18" font-weight="800" y="26" fill="#16A34A">Green · R-1</text>
+    </g>
+    <g transform="translate(630,80)">
+      <text class="label" y="0">FRONT ROAD</text>
+      <text class="ink" font-size="18" font-weight="800" y="26">9 m DP Road</text>
+    </g>
+    <!-- Row 3 -->
+    <g transform="translate(0,160)">
+      <text class="label" y="0">FSI ALLOWED</text>
+      <text class="ink" font-size="18" font-weight="800" y="26">1.1 (+ 0.3 TDR)</text>
+    </g>
+    <g transform="translate(210,160)">
+      <text class="label" y="0">SETBACK</text>
+      <text class="ink" font-size="15" font-weight="700" y="26">F: 3m · S: 1.5m · R: 1.5m</text>
+    </g>
+    <g transform="translate(420,160)">
+      <text class="label" y="0">TDR AVAILABLE</text>
+      <text class="ink" font-size="18" font-weight="800" y="26">Yes · 0.3 FSI</text>
+    </g>
+    <g transform="translate(630,160)">
+      <text class="label" y="0">RESERVATION</text>
+      <text class="ink" font-size="18" font-weight="800" y="26" fill="#047857">None (free)</text>
+    </g>
+  </g>
+
+  <!-- VALUE COMPARISON -->
+  <text x="80" y="1196" class="label">VALUE COMPARISON</text>
+  <rect x="80" y="1212" width="880" height="200" rx="14" fill="#fff" stroke="#E2E8F0"/>
+  <!-- 3 tiles -->
+  <g transform="translate(104,1240)">
+    <!-- Govt -->
+    <rect x="0" y="0" width="260" height="142" rx="10" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="20" y="26" class="label">GOVT (READY RECKONER)</text>
+    <text x="20" y="72" class="ink" font-family="Plus Jakarta Sans" font-size="32" font-weight="800">₹42.8 Lakh</text>
+    <text x="20" y="98" class="muted" font-size="12">₹19,200 / sq.ft · ASR 2026</text>
+    <text x="20" y="120" class="muted" font-size="11">Stamp duty est. ₹2.14 L (5%)</text>
+
+    <g transform="translate(280,0)">
+      <rect x="0" y="0" width="260" height="142" rx="10" fill="#ECFDF5" stroke="#A7F3D0"/>
+      <text x="20" y="26" fill="#047857" class="label">MARKET (LIVE)</text>
+      <text x="20" y="72" fill="#047857" font-family="Plus Jakarta Sans" font-size="32" font-weight="800">₹58.0 Lakh</text>
+      <text x="20" y="98" fill="#047857" font-size="12">₹24,200 / sq.ft · 12 comparables</text>
+      <rect x="20" y="110" width="64" height="22" rx="11" fill="#047857"/>
+      <text x="52" y="125" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">+35% ↑</text>
+    </g>
+
+    <g transform="translate(560,0)">
+      <rect x="0" y="0" width="272" height="142" rx="10" fill="#FEF3C7" stroke="#FDE68A"/>
+      <text x="20" y="26" fill="#92400E" class="label">LOAN-ELIGIBLE</text>
+      <text x="20" y="72" fill="#0F172A" font-family="Plus Jakarta Sans" font-size="32" font-weight="800">₹46.4 L</text>
+      <text x="20" y="98" class="muted" font-size="12">80% of ASR (bank standard)</text>
+      <text x="20" y="120" class="muted" font-size="11">SBI / HDFC / LIC HFL pre-check</text>
+    </g>
+  </g>
+
+  <!-- 7/12 / FERFAR TABS -->
+  <text x="80" y="1458" class="label">OFFICIAL RECORDS</text>
+  <rect x="80" y="1474" width="880" height="440" rx="14" fill="#fff" stroke="#E2E8F0"/>
+  <!-- Tab header -->
+  <rect x="80" y="1474" width="880" height="56" rx="14" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <line x1="80" y1="1530" x2="960" y2="1530" stroke="#E2E8F0"/>
+  <text x="130" y="1510" fill="#0F4C81" font-size="13" font-weight="800">7/12 (Satbara)</text>
+  <line x1="102" y1="1530" x2="182" y2="1530" stroke="#0F4C81" stroke-width="3"/>
+  <text x="240" y="1510" class="muted" font-size="13" font-weight="600">8A</text>
+  <text x="300" y="1510" class="muted" font-size="13" font-weight="600">Property Card</text>
+  <text x="420" y="1510" class="muted" font-size="13" font-weight="600">Ferfar (Mutations)</text>
+  <text x="580" y="1510" class="muted" font-size="13" font-weight="600">Encumbrance</text>
+  <text x="900" y="1510" text-anchor="end" fill="#0F4C81" font-size="12" font-weight="700">↓ Download PDF</text>
+
+  <!-- 7/12 content area mockup -->
+  <g transform="translate(100,1550)" font-size="12" fill="#334155">
+    <text y="10" class="label">NAME OF HOLDER (खातेदार)</text>
+    <text y="32" class="ink" font-size="15" font-weight="700">Shri Ramchandra Laxman Deshmukh</text>
+    <text y="60" class="label">ADJACENT HOLDERS (सहहिस्सेदार)</text>
+    <text y="82" fill="#334155" font-size="13">N: Gat 142/1 — Patil · E: Gat 142/3 — Jadhav · S: 9m DP Road · W: Gat 143</text>
+
+    <text y="122" class="label">CROP HISTORY · CULTIVATION</text>
+    <text y="144" fill="#334155" font-size="13">Year 2025-26:  Jowar (80%) · Vacant (20%)</text>
+
+    <text y="184" class="label">ENCUMBRANCE</text>
+    <text y="206" fill="#047857" font-size="14" font-weight="700">✓ No mortgage / charge registered</text>
+
+    <text y="246" class="label">LAST FERFAR (MUTATION)</text>
+    <text y="268" fill="#334155" font-size="13">Ferfar No. 4178 · 12 Feb 2024 · Inheritance transfer</text>
+
+    <text y="308" class="label">VERIFICATION</text>
+    <text y="330" fill="#0F4C81" font-size="13" font-weight="700">✓ Synced with Mahabhulekh on 17 Apr 2026 · 14:28 IST</text>
+  </g>
+
+  <!-- RIGHT SIDEBAR -->
+  <rect x="984" y="300" width="376" height="440" rx="14" fill="#fff" stroke="#E2E8F0"/>
+  <text x="1004" y="330" class="label">OWNER / LISTING</text>
+  <circle cx="1024" cy="370" r="24" fill="#0F4C81"/>
+  <text x="1024" y="376" text-anchor="middle" fill="#fff" font-size="14" font-weight="800">RD</text>
+  <text x="1058" y="364" class="ink" font-size="15" font-weight="800">R. L. Deshmukh</text>
+  <text x="1058" y="384" class="muted" font-size="12">Verified owner · Listed 8 days ago</text>
+  <rect x="1004" y="410" width="336" height="44" rx="8" fill="#0F4C81"/>
+  <text x="1172" y="438" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Enquire (₹0)</text>
+  <rect x="1004" y="464" width="336" height="44" rx="8" fill="#25D366"/>
+  <text x="1172" y="492" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">💬 WhatsApp Owner</text>
+  <rect x="1004" y="518" width="336" height="44" rx="8" fill="#fff" stroke="#0F4C81" stroke-width="1.5"/>
+  <text x="1172" y="546" text-anchor="middle" fill="#0F4C81" font-size="14" font-weight="700">Book site visit</text>
+
+  <line x1="1004" y1="586" x2="1340" y2="586" stroke="#E2E8F0"/>
+
+  <text x="1004" y="614" class="label">DUE-DILIGENCE CHECKLIST</text>
+  <g transform="translate(1004,636)" font-size="13" fill="#334155">
+    <text y="0">✓ Title chain (30 yrs) clean</text>
+    <text y="24">✓ MahaRERA registered</text>
+    <text y="48">✓ DP approved — Residential</text>
+    <text y="72">⚠ Pending TP Scheme gazette</text>
+    <text y="96" fill="#DC2626">✗ Boundary survey not attached</text>
+  </g>
+
+  <!-- REQUEST TITLE REPORT -->
+  <rect x="1004" y="748" width="336" height="120" rx="10" fill="#FEF3C7" stroke="#FDE68A"/>
+  <text x="1024" y="776" fill="#92400E" font-size="12" font-weight="800" letter-spacing="1.2">TITLE REPORT</text>
+  <text x="1024" y="802" class="ink" font-size="18" font-weight="800">Get legal due-diligence</text>
+  <text x="1024" y="826" class="muted" font-size="12">Advocate-signed · 48 hour TAT</text>
+  <rect x="1024" y="838" width="140" height="24" rx="5" fill="#F97316"/>
+  <text x="1094" y="855" text-anchor="middle" fill="#fff" font-size="12" font-weight="800">From ₹4,999 →</text>
+
+  <!-- NEIGHBOURHOOD CARDS -->
+  <text x="80" y="1960" class="muted" font-size="11">Continues below: Neighbourhood schools · Transport · Recent transactions · Similar plots</text>
+
+</svg>
